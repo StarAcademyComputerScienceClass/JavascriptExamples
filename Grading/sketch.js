@@ -13,9 +13,17 @@ function submit_grade() {
     let g = text_field.value;
     text_field.value = '';
     grades.push(g);
-    grades_txt.textContent = "Grades : " + grades.toString();
+    grades_txt.innerHTML += "<li> " + g + "</li>" + "<button>x</button>";
 }
 
 function calc_average() {
-    average_txt.textContent = "Average " + 100;
+    let sum = 0;
+    let avg = 0;
+
+    for (let i = 0; i < grades.length; i++) {
+        sum += Number(grades[i]);
+    }
+
+    avg = sum / grades.length
+    average_txt.textContent = "Average " + avg;
 }
